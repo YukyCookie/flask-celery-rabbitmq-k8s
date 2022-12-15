@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: celery
+  name: celery-deployment
+  namespace: twitter-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery
+  template:
+    metadata:
+      labels:
+        app: celery
+    spec:
+      containers:
+      - name: celery
+        image: celery:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5672
+        resources:
+          limits:
+            cpu: "100m"
+

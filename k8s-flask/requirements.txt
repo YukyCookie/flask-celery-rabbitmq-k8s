@@ -1,0 +1,6 @@
+flask
+celery
+gunicorn
+pymongo
+kubernetes
+textblob
