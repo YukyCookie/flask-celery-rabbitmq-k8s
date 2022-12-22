@@ -1,5 +1,5 @@
 # flask-celery-rabbitmq-k8s
-There are several steps to import the image into Microk8s registry (building celery image as an example)
+## Import the image into Microk8s registry (building celery image as an example)
 1. Build celery image
 ```
 sudo docker build ./k8s-celerytwitter-user/. -t celery
@@ -24,7 +24,8 @@ sudo microk8s ctr -n k8s.io images ls name~=celery
 ```
 microk8s ctr images rm $(microk8s ctr images ls name~='celery' | awk {'print $1'})
 ```
-7. Remove all the docker images as needed
+7. Remove all the docker images as needed (optional)
 ```
 docker rmi $(docker images -q) -f
 ```
+Now the image on Microk8s is ready to use in the deployment.
