@@ -6,7 +6,12 @@ metadata:
   name: flask-deployment
   namespace: twitter-website
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: flask
@@ -21,6 +26,10 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
+        resources:
+          limits:
+            cpu: 100m
+
 
 
 ---
@@ -32,9 +41,9 @@ metadata:
 spec:
   selector:
     app: flask
-  type: NodePort
+  type: LoadBalancer
   ports:
   - protocol: TCP
     port: 5000
     targetPort: 5000
-    nodePort: 31819
+    # nodePort: 31819

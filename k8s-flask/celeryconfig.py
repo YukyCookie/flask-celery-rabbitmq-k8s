@@ -40,5 +40,5 @@ BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAACq9kAEAAAAAPv1Re47n%2BL3Wo%2FLtVfqE2wJ4opA%
 CELERY_BROKER_URL = "amqp://{}:{}@{}:{}".format(rabbitmq_user, rabbitmq_password, rabbitmq_server, rabbitmq_port)
 CELERY_RESULT_BACKEND = "mongodb://{}:{}@{}:{}/twitter_db".format(mongo_user, mongo_password, mongo_server, mongo_port)
 
-celery_app = Celery("tasks", broker = CELERY_BROKER_URL, backend = CELERY_RESULT_BACKEND)
-
+celery_hash = Celery("hashtag_module", broker = CELERY_BROKER_URL, backend = CELERY_RESULT_BACKEND)
+celery_loc = Celery("loc_module", broker = CELERY_BROKER_URL, backend = CELERY_RESULT_BACKEND)

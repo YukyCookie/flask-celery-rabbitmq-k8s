@@ -2,10 +2,6 @@ function sendreq(){
 
 }
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#form').onsubmit = () => {
@@ -14,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
+        const search_number = document.querySelector('#form-number').value;
+        const search_prefer = document.querySelector('#form-prefer').value;
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -46,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add data to send with request
         const data = new FormData();
         data.append('search_query', search_query);
+        data.append('search_number', search_number);
+        data.append('search_prefer', search_prefer);
 
         // Send request
         request.send(data);
@@ -62,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
+        const search_number = document.querySelector('#form-number').value;
+        const search_prefer = document.querySelector('#form-prefer').value;
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -95,6 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add data to send with request
         const data = new FormData();
         data.append('search_query', search_query);
+        data.append('search_number', search_number);
+        data.append('search_prefer', search_prefer);
 
         // Send request
         request.send(data);
@@ -116,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
+        const search_number = document.querySelector('#form-number').value;
+        const search_prefer = document.querySelector('#form-prefer').value;
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -149,6 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add data to send with request
         const data = new FormData();
         data.append('search_query', search_query);
+        data.append('search_number', search_number);
+        data.append('search_prefer', search_prefer);
 
         // Send request
         request.send(data);
@@ -171,6 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
+        const search_number = document.querySelector('#form-number').value;
+        const search_prefer = document.querySelector('#form-prefer').value;
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -204,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add data to send with request
         const data = new FormData();
         data.append('search_query', search_query);
+        data.append('search_number', search_number);
+        data.append('search_prefer', search_prefer);
 
         // Send request
         request.send(data);
@@ -225,6 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize new request
         const request = new XMLHttpRequest();
         const search_query = document.querySelector('#form-username').value;
+        const search_number = document.querySelector('#form-number').value;
+        const search_prefer = document.querySelector('#form-prefer').value;
         request.open('POST', '/search');
 
         // Callback function for when request completes
@@ -258,7 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add data to send with request
         const data = new FormData();
         data.append('search_query', search_query);
-
+        data.append('search_number', search_number);
+        data.append('search_prefer', search_prefer);
+        
         // Send request
         request.send(data);
 
