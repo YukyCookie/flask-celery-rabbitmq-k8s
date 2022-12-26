@@ -2,7 +2,7 @@
 ## Import the image into Microk8s registry (building celery image as an example)
 1. Build celery image
 ```
-sudo docker build ./k8s-celerytwitter-user/. -t celery
+sudo docker build ./k8s-celerytwitter-hashtag/. -t celery-hashtag
 ```
 2. Enable microk8s registry
 ```
@@ -10,11 +10,11 @@ sudo microk8s.enable registry
 ```
 3. Save docker image to a tar file
 ```
-sudo docker save celery > celery.tar
+sudo docker save celery-hashtag > celery-hashtag.tar
 ```
 4. Import image into k8s registry with the default namespace - k8s.io
 ```
-sudo microk8s ctr -n k8s.io image import celery.tar
+sudo microk8s ctr -n k8s.io image import celery-hashtag.tar
 ```
 5. Verify the import by listing images. 
 ```
