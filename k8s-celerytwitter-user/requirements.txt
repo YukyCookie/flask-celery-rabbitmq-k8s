@@ -1,4 +1,0 @@
-tweepy
-pymongo
-celery
-kubernetes
