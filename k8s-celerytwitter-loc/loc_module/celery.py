@@ -3,6 +3,7 @@ import pymongo
 import base64
 from celery import Celery
 from kubernetes import client, config
+from kombu import Queue
 
 
 # Configure K8s Client and read secrets
@@ -29,16 +30,27 @@ rabbitmq_user = base64.b64decode(rabbitmq_secret["username"]).decode("utf-8")
 rabbitmq_password = base64.b64decode(rabbitmq_secret["password"]).decode("utf-8")
 
 # TWITTER CREDENTIALS
-CONSUMER_API_KEY = "nPRZSo2EX61jiSQv6OJDI4pEP"
-CONSUMER_API_SECRET = "UvJ7L57faQilBEc5XwSpUmzTwQjJe1PfvZmFaZEhNsk828OPpCD"
-ACCESS_TOKEN = "1597522454318120961-FAplOSuHfjtHYE6fJj5w21l3WHLSi8"
-ACCESS_TOKEN_SECRET = "5iJFdBaMxpb3UqMYQSdy7CVH74ydJz7IvEvpY3AjRy2aq"
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAACq9kAEAAAAA1JMM%2BGIFruCLJ5AncvYx9EEz4Us%3Da7KzNs1JtOIcMWZ6INa4hYC577dQcFIDPk2fMhnELaZXDdE4tT"
+CONSUMER_API_KEY = "z7CU6JH4Uc9dy7E2NDHdQsXBe"
+CONSUMER_API_SECRET = "ktKk5YdEmfiKSefPYAQLatJGic9jG1dftiOLpqQS5TLOlVrrRU"
+ACCESS_TOKEN = "1607442818741542917-7IgpX51Q7qesAfFm5MvsAWIVFBINJz"
+ACCESS_TOKEN_SECRET = "k4lD7dlMShM1XKB061mNZlAOls96eJhtx5OL6KP0ZaEmU"
+BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAEtYkwEAAAAAAoCfU6xzX58KKHV19FCivKnmdko%3DdQYwRGrJvCOWRhNo1U1T85JsTVbbYwcvk6IMFo6WTXeZ3mrQ8M"
 
 # CELERY CONFIGURATION
 
 CELERY_BROKER_URL = "amqp://{}:{}@{}:{}".format(rabbitmq_user, rabbitmq_password, rabbitmq_server, rabbitmq_port)
 CELERY_RESULT_BACKEND = "mongodb://{}:{}@{}:{}/twitter_db".format(mongo_user, mongo_password, mongo_server, mongo_port)
+
+CELERY_QUEUES = (
+    Queue('loc_queue', routing_key='loc.tasks'),
+    Queue('hash_queue', routing_key='hash.tasks')
+)
+
+CELERY_ROUTES=({
+    'loc_module.tasks': {'queue': 'loc_queue', 'routing_key': 'loc.tasks',},
+    'hashtag_module.tasks': {'queue': 'hash_queue', 'routing_key': 'hash.tasks',},
+    },
+)
 
 celery_app = Celery("loc_module.tasks", broker = CELERY_BROKER_URL, backend = CELERY_RESULT_BACKEND)
 

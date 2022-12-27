@@ -21,8 +21,8 @@ spec:
         command: 
         - "bash"
         - "-c"
-        - "celery --app hashtag_module.tasks worker --loglevel=INFO --concurrency=2 -n worker1"
-        # - "celery --app tasks worker --loglevel=INFO --concurrency=2 -n worker2"
+        - "celery --app hashtag_module.tasks worker --loglevel=INFO --concurrency=2 -n hashworker1 -Q hash_queue"
+        # - "celery --app hashtag_module.tasks worker --loglevel=INFO --concurrency=2 -n hashworker2 -Q hash_queue"
         imagePullPolicy: Never
         ports:
         - containerPort: 5672

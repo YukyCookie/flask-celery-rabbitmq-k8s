@@ -11,13 +11,18 @@ app = Flask(__name__)
 
 def search_recent_tweets_hashtag(query, limit):
     q = "{}".format(query)
-    r = celery_hash.send_task("hashtag_module.tasks.search", kwargs={"query":q, "limit":limit})
+    r = celery_hash.send_task("hashtag_module.tasks.search", kwargs={"query":q, "limit":limit}, queue='hash_queue')
     return r.id
 
 def search_recent_tweets_loc(query, limit):
     q = "{}".format(query)
-    r = celery_loc.send_task("loc_module.tasks.search", kwargs={"query":q, "limit":limit})
+    r = celery_loc.send_task("loc_module.tasks.search", kwargs={"query":q, "limit":limit}, queue='loc_queue')
     return r.id
+
+def get_result(celery_app, return_id):
+    res = celery_app.AsyncResult(return_id)
+    tweets = list(res.get())
+    return tweets    
 
 @app.route("/")
 def index():
@@ -28,27 +33,15 @@ def search():
     search_tweet = request.form.get("search_query")
     search_number = request.form.get("search_number")
     search_prefer = request.form.get("search_prefer")
-    t = []
-    if str(search_prefer).lower ==  "city":
-        id=str(search_recent_tweets_loc(str(search_tweet), int(search_number))) 
-        res = celery_loc.AsyncResult(id)
-        tweets = list(res.get())
-        for tweet in tweets:
-            polarity = TextBlob(tweet["text"]).sentiment.polarity
-            subjectivity = TextBlob(tweet["text"]).sentiment.subjectivity
-            t.append([tweet["text"],polarity,subjectivity])
 
-        return jsonify({"success":True,"tweets":t})
+    if str(search_prefer).lower() ==  "city":
+        id=str(search_recent_tweets_loc(str(search_tweet), int(search_number))) 
+        tweets = get_result(celery_loc, id)
     else:
         id=str(search_recent_tweets_hashtag(str(search_tweet), int(search_number))) 
-        res = celery_hash.AsyncResult(id)
-        tweets = list(res.get())
-        for tweet in tweets:
-            polarity = TextBlob(tweet["text"]).sentiment.polarity
-            subjectivity = TextBlob(tweet["text"]).sentiment.subjectivity
-            t.append([tweet["text"],polarity,subjectivity])
+        tweets = get_result(celery_hash, id)
 
-        return jsonify({"success":True,"tweets":t})
+    return jsonify({"success":True,"tweets":tweets})
 
 if __name__ == "__main__":
     app.run(port=5000, host="0.0.0.0")
