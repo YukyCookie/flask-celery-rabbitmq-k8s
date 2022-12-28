@@ -3,4 +3,3 @@ celery
 gunicorn
 pymongo
 kubernetes
-textblob

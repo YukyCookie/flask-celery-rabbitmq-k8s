@@ -1,13 +1,14 @@
 from flask import Flask,render_template,request,jsonify, current_app
 from celeryconfig import celery_hash, celery_loc
-from celery import Celery 
-from celery.result import AsyncResult  
-import celery.states as states
-from textblob import TextBlob
+# from celery import Celery 
+# from celery.result import AsyncResult  
+# import celery.states as states
+# from textblob import TextBlob
 import time
-
+import logging
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.DEBUG)
 
 def search_recent_tweets_hashtag(query, limit):
     q = "{}".format(query)
@@ -21,8 +22,11 @@ def search_recent_tweets_loc(query, limit):
 
 def get_result(celery_app, return_id):
     res = celery_app.AsyncResult(return_id)
+    app.logger.info(res.get())
     tweets = list(res.get())
+    app.logger.info(tweets)
     return tweets    
+
 
 @app.route("/")
 def index():
@@ -45,3 +49,4 @@ def search():
 
 if __name__ == "__main__":
     app.run(port=5000, host="0.0.0.0")
+

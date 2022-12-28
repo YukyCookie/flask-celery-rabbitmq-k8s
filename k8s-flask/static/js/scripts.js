@@ -4,12 +4,14 @@ jQuery(document).ready(function() {
     /*
         Fullscreen background
     */
-	$.backstretch([
-                   "static/img/backgrounds/twitter.jpg"
-                 , "static/img/backgrounds/twitter1.jpg"
-                ], {duration: 3000, fade: 750});
-    
-    /*
+	// $.backstretch([
+    //                "static/img/backgrounds/twitter.jpg"
+    //              , "static/img/backgrounds/twitter1.jpg"
+    //             ], {duration: 3000, fade: 750});
+    $.backstretch([
+        "static/img/backgrounds/twitter.jpg"
+        ]);
+/*
         Form validation
     */
     $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
