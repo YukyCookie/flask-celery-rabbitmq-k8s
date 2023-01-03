@@ -6,7 +6,7 @@ from textblob import TextBlob
 
 client = tweepy.Client(bearer_token = celeryconfig.BEARER_TOKEN)
 
-@celery_app.task(queue='send_data')
+@celery_app.task(queue='send_hash')
 def insert_data(msg):
     return msg
 
