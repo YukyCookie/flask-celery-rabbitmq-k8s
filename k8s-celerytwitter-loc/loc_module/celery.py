@@ -42,15 +42,17 @@ CELERY_BROKER_URL = "amqp://{}:{}@{}:{}".format(rabbitmq_user, rabbitmq_password
 CELERY_RESULT_BACKEND = "mongodb://{}:{}@{}:{}/twitter_db".format(mongo_user, mongo_password, mongo_server, mongo_port)
 
 CELERY_QUEUES = (
-    Queue('send_data', routing_key='send.tasks', queue_arguments={'x-max-priority': 1}),
+    Queue('send_loc', routing_key='send.loc', queue_arguments={'x-max-priority': 1}),
+    Queue('send_hash', routing_key='send.hash', queue_arguments={'x-max-priority': 1}),
     Queue('loc_queue', routing_key='loc.tasks', queue_arguments={'x-max-priority': 10}),
     Queue('hash_queue', routing_key='hash.tasks', queue_arguments={'x-max-priority': 10}),
 )
 
 CELERY_ROUTES=({
-    'loc_module.tasks': {'queue': 'loc_queue', 'routing_key': 'loc.tasks',},
+    'loc_module.tasks.search': {'queue': 'loc_queue', 'routing_key': 'loc.tasks',},
+    'loc_module.tasks.insert_data': {'queue': 'send_loc', 'routing_key': 'send.loc'},
     'hashtag_module.tasks.search': {'queue': 'hash_queue', 'routing_key': 'hash.tasks',},
-    'hashtag_module.tasks.insert_data': {'queue': 'send_data', 'routing_key': 'send.tasks'},
+    'hashtag_module.tasks.insert_data': {'queue': 'send_hash', 'routing_key': 'send.hash'},
     },
 )
 
