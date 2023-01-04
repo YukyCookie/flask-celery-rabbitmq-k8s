@@ -63,13 +63,15 @@
                             <div class="form-bottom">
 			                    <form role="form" id="form" class="login-form">
                                     <div class="form-group">
+                                        <label for="form-number">Enter the number of shown tweets: </label>
 			                        	<input type="text" name="tweet_search" placeholder="Enter the number of shown tweets" class="form-username form-control" id="form-number">
                                     </div>
                                     <div class="form-group">
+                                        <label for="form-prefer">Enter searching preference (hashtag or city): </label>
                                         <input type="text" name="tweet_search" placeholder="Enter searching preference: hashtag or city" class="form-username form-control" id="form-prefer">
                                     </div>
 			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
+			                    		<label for="form-username">Enter a search topic(e.g. hello) or city(e.g. NewYork/newyork):  </label>
 			                        	<input type="text" name="tweet_search" placeholder="Enter a search topic(e.g. hello) or city(e.g. NewYork/newyork)" class="form-username form-control" id="form-username">
 			                        </div>
 
@@ -119,6 +121,9 @@
                     </div>
 
                     <div id="search_result">
+                        <div id="senti_piechart">
+
+                        </div>
                         <ol id="search_list">
 
                         </ol>
@@ -135,8 +140,8 @@
         <script src="static/bootstrap/js/bootstrap.min.js"></script>
         <script src="static/js/jquery.backstretch.min.js"></script>
         <script src="static/js/scripts.js"></script>
+        <script src="static/js/plotly.js"></script>
         <script src="{{ url_for('static',filename='index.js') }}"></script>
-
         <!--[if lt IE 10]>
             <script src="static/js/placeholder.js"></script>
         <![endif]-->

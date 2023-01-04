@@ -22,9 +22,7 @@ def search_recent_tweets_loc(query, limit):
 
 def get_result(celery_app, return_id):
     res = celery_app.AsyncResult(return_id)
-    app.logger.info(res.get())
     tweets = list(res.get())
-    app.logger.info(tweets)
     return tweets    
 
 
