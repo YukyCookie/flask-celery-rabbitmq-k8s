@@ -29,3 +29,5 @@ microk8s ctr images rm $(microk8s ctr images ls name~='celery' | awk {'print $1'
 docker rmi $(docker images -q) -f
 ```
 Now the image on Microk8s is ready to use in the deployment.
+
+![](website.png)
