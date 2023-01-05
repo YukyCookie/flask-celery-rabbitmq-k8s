@@ -52,3 +52,32 @@ button.btn:hover { opacity: 0.6; color: #fff; }
 button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
 button.btn:focus { outline: 0; color: #fff; }
 /* button.btn:active:focus, button.btn.active:focus { outline: 0; color: #fff; } */
+
+button.group-btn-1 {
+    width: 25%;
+    min-width:fit-content;
+}
+
+button.group-btn-2 {
+    width: 24%;
+    min-width:fit-content;
+}
+
+.btn-toolbar {
+    width: 100%;
+} 
+.btn-group{
+    width: 100%;
+    margin-top: 25px;
+}
+
+button.group-btn-all {
+    width:49%;
+    min-width:fit-content;
+}
+
+/* .enter-hints{
+    text-align: left;
+} */
+
+
