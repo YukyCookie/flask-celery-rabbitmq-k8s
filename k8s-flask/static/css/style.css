@@ -3,7 +3,7 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    color: #888;
+    color: rgb(255, 255, 255);
     line-height: 30px;
     text-align: center;
 }
@@ -31,7 +31,7 @@ h3 {
     line-height: 30px;
 }
 
-img { max-width: 100%; }
+img { max-width: 100%; width: 100%}
 
 ::-moz-selection { background: #e89a3e; color: #fff; text-shadow: none; }
 ::selection { background: #e89a3e; color: #fff; text-shadow: none; }
@@ -100,10 +100,6 @@ img { max-width: 100%; }
 	text-align: left;
 }
 
-
-.search_tweets .reset_filter{
-
-}
 
 .form-top-left {
 	float: left;
@@ -178,6 +174,13 @@ img { max-width: 100%; }
 }
 
 #search_result{
-	text-align: left;
+	/* text-align: left; */
     background-color: white;
+}
+#search_list{
+	text-align: left;
+}
+
+#senti_piechart{
+	text-align: center;
 }

@@ -1,14 +1,7 @@
 from flask import Flask,render_template,request,jsonify, current_app
 from celeryconfig import celery_hash, celery_loc
-# from celery import Celery 
-# from celery.result import AsyncResult  
-# import celery.states as states
-# from textblob import TextBlob
-import time
-import logging
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.DEBUG)
 
 def search_recent_tweets_hashtag(query, limit):
     q = "{}".format(query)
@@ -23,7 +16,12 @@ def search_recent_tweets_loc(query, limit):
 def get_result(celery_app, return_id):
     res = celery_app.AsyncResult(return_id)
     tweets = list(res.get())
-    return tweets    
+    return tweets 
+
+def gen_wordcloud(wc_svg):
+    f = open('static/img/wordcloud.svg', "w+")
+    f.write(wc_svg)
+    f.close()   
 
 
 @app.route("/")
@@ -38,11 +36,14 @@ def search():
 
     if str(search_prefer).lower() ==  "city":
         id=str(search_recent_tweets_loc(str(search_tweet), int(search_number))) 
-        tweets = get_result(celery_loc, id)
+        all_tweets = get_result(celery_loc, id)
+        tweets = all_tweets[0:-1]
+        gen_wordcloud(str(all_tweets[-1]))
     else:
         id=str(search_recent_tweets_hashtag(str(search_tweet), int(search_number))) 
-        tweets = get_result(celery_hash, id)
-
+        all_tweets = get_result(celery_hash, id)
+        tweets = all_tweets[0:-1]
+        gen_wordcloud(str(all_tweets[-1]))
     return jsonify({"success":True,"tweets":tweets})
 
 if __name__ == "__main__":

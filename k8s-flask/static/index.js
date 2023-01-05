@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#form').onsubmit = () => {
-        
         document.querySelector('#search_list').innerHTML="";
 
         // Initialize new request
@@ -18,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Extract JSON data from request
             const data = JSON.parse(request.responseText);
             const senti_piechart = document.getElementById("senti_piechart");
+            document.getElementById("wordcloud_img").src = "../static/img/wordcloud.svg?t="+Math.random();
+            
             var pos = 0;
             var neg = 0;
             var neu = 0;
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Extract JSON data from request
             const data = JSON.parse(request.responseText);
+            document.getElementById("wordcloud_img").src = "../static/img/wordcloud.svg?t="+Math.random();
 
             // Update the result div
             if (data.success) {
@@ -155,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Extract JSON data from request
             const data = JSON.parse(request.responseText);
+            document.getElementById("wordcloud_img").src = "../static/img/wordcloud.svg?t="+Math.random();
 
             // Update the result div
             if (data.success) {
@@ -200,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Extract JSON data from request
             const data = JSON.parse(request.responseText);
+            document.getElementById("wordcloud_img").src = "../static/img/wordcloud.svg?t="+Math.random();
 
             // Update the result div
             if (data.success) {
@@ -244,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Extract JSON data from request
             const data = JSON.parse(request.responseText);
+            document.getElementById("wordcloud_img").src = "../static/img/wordcloud.svg?t="+Math.random();
 
             // Update the result div
             if (data.success) {
