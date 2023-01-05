@@ -45,14 +45,12 @@
                 </div>
 
 
-
-
                 <div class="row">
 
                     <div class="col-sm-12  form-box">
                         <div class="form-top">
                             <div class="form-top-left">
-                                <h3>What tweets you want to see!</h3>
+                                <h3>What tweets do you want to see!</h3>
                                 <p>Use the sentiment and factual filters below </p>
                             </div>
                             <div class="form-top-right">
@@ -75,42 +73,20 @@
                                     <input type="text" name="tweet_search" placeholder="Enter a search topic(e.g. hello) or city(e.g. NewYork/newyork)" class="form-username form-control" id="form-username">
                                 </div>
 
-                                <div class="row search_tweets">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button id="search_btn" class="btn">Search Tweets</button>
+
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group" >
+                                        <button id="search_btn" data-toggle="tooltip" data-placement="left" title="Show all Tweets" class="btn group-btn-all">Search Tweets</button>
+                                        <button data-toggle="tooltip" data-placement="left" title="Reset Filters" class="btn group-btn-all">Reset Filters</button>
                                     </div>
                                 </div>
-
-                                <div class="row reset_filter">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <button data-toggle="tooltip" data-placement="top" title="Show all Tweets" class="btn">Reset Filters</button>
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group" >
+                                        <button data-toggle="tooltip" data-placement="bottom" title="Show only Positive Tweets" class="btn group-btn-1" id="psenti" >Positive Tweets</button>
+                                        <button data-toggle="tooltip" data-placement="bottom" title="Show only Negative Tweets" class="btn group-btn-2" id="nsenti" >Negative Tweets</button>
+                                        <button data-toggle="tooltip" data-placement="bottom" title="Tweets which are Opinion" id="opi" class="btn group-btn-2" >Opinion Tweet</button>
+                                        <button data-toggle="tooltip" data-placement="bottom" title="Tweets which are factual" id="fac" class="btn group-btn-1" >Factual Tweet</button>
                                     </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-sm-4 col-sm-offset-1">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                <button data-toggle="tooltip" data-placement="left" title="Show only Positive Tweets" class="btn" id="psenti">Positive Tweets</button>
-                                            </div>
-                                            <div class="col-sm">
-                                                <button data-toggle="tooltip" data-placement="left" title="Show only Negative Tweets" class="btn" id="nsenti">Negative Tweets</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-4 col-sm-offset-2">
-                                        <div class="row">
-                                            <div class="col-sm">
-                                                <button data-toggle="tooltip" data-placement="left" title="Tweets which are Opinion" id="opi" class="btn">Opinion Tweet</button>
-                                            </div>
-                                            <div class="col-sm">
-                                                <button data-toggle="tooltip" data-placement="left" title="Tweets which are factual" id="fac" class="btn">Factual Tweet</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
 
 
