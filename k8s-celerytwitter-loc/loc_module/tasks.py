@@ -12,8 +12,10 @@ def insert_data(msg):
 
 @celery_app.task(queue='loc_queue')
 def search(query, limit):
+    STOPWORDS.update(['https', query, 't', 'co', 'will', 'amp'])
     tweets = tweepy.Paginator(client.search_recent_tweets, query="entity:{} -is:retweet lang:en".format(query), max_results=100).flatten(limit)
     all_tweets = []
+    text = ""
     for tweet in tweets:
         t = dict(tweet)
         text = text + " " + t["text"]

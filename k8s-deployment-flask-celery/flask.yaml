@@ -29,7 +29,7 @@ spec:
         resources:
           limits:
             cpu: 100m
-            memory: 50Mi
+            memory: 100Mi
 
 
 
@@ -42,9 +42,9 @@ metadata:
 spec:
   selector:
     app: flask
-  type: LoadBalancer
+  type: NodePort
   ports:
   - protocol: TCP
     port: 5000
     targetPort: 5000
-    # nodePort: 31819
+    nodePort: 31819

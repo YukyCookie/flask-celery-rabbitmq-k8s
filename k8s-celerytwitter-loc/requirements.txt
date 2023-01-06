@@ -4,3 +4,4 @@ celery
 kubernetes
 kombu
 textblob
+wordcloud
