@@ -77,7 +77,7 @@
                                 <div class="btn-toolbar" role="toolbar">
                                     <div class="btn-group" >
                                         <button id="search_btn" data-toggle="tooltip" data-placement="left" title="Show all Tweets" class="btn group-btn-all">Search Tweets</button>
-                                        <button data-toggle="tooltip" data-placement="left" title="Reset Filters" class="btn group-btn-all">Reset Filters</button>
+                                        <button type="reset" data-toggle="tooltip" data-placement="left" title="Reset Filters" id='res' class="btn group-btn-all reset_filter">Reset Filters</button>
                                     </div>
                                 </div>
                                 <div class="btn-toolbar" role="toolbar">
@@ -97,14 +97,26 @@
                 </div>
 
                 <div id="search_result">
-                    <div id="senti_piechart">
-
+                    <div class="Loading", id="loading" style="display: none;">
+                        <div class="Loading-bar">
+                            <div class="Loading-circle"></div>
+                            <p class="Loading-p">Loading</p>
+                        </div>
                     </div>
-                    <hr />
-                    <div id="wordcloud_div">
+                    <div id="senti_piechart">
+                        
+                    </div>
+                    <div class="Loading", id="loading2" style="display: none;">
+                        <div class="Loading-bar">
+                            <div class="Loading-circle"></div>
+                            <p class="Loading-p">Loading</p>
+                        </div>
+                    </div>
+                    <hr id="search_hr"/>
+                    <div id="wordcloud_div" >
                         <img id="wordcloud_img" title="wordcloud">
                     </div>
-                    <hr />
+                    <hr id="search_hr"/>
                     <ol id="search_list">
 
                     </ol>

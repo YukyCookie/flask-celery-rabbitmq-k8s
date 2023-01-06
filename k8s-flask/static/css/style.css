@@ -186,3 +186,50 @@ img { max-width: 100%; width: 100%}
 #senti_piechart{
 	text-align: center;
 }
+
+  
+.Loading {
+	background: white;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+  
+.Loading-bar {
+	position: relative;
+	height: 2px;
+	width: 500px;
+	margin: 0 auto;
+	background: #4a7da4;
+	margin-top: 60px;
+	opacity: 0.6;
+}
+  
+.Loading-circle {
+	position: absolute;
+	top: -30px;
+	margin-left: -30px;
+	height: 60px;
+	width: 60px;
+	left: 0;
+	background: #4a7da4;
+	border-radius: 30%;
+	animation: move 5s infinite;
+}
+  
+.Loading-p {
+	position: absolute;
+	top: -35px;
+	right: -85px;
+	text-transform: uppercase;
+	color: white;
+	font-family: helvetica, sans-serif;
+	font-weight: bold;
+}
+  
+@keyframes move {
+	0% {left: 0;}
+	50% {left: 100%; transform: rotate(450deg); width: 150px; height: 150px;}
+	75% {left: 100%; transform: rotate(450deg); width: 150px; height: 150px;}
+	100% {right: 100%;}
+} 

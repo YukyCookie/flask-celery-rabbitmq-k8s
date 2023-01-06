@@ -29,11 +29,11 @@ rabbitmq_user = base64.b64decode(rabbitmq_secret["username"]).decode("utf-8")
 rabbitmq_password = base64.b64decode(rabbitmq_secret["password"]).decode("utf-8")
 
 # TWITTER CREDENTIALS
-CONSUMER_API_KEY = "IA25l9vK81ox1pY0Ewi9YqJbt"
-CONSUMER_API_SECRET = "JGjyPRpfrs8cAQyhKPx24veBih3WjGIusfx7xO91Ttbt53xeHs"
-ACCESS_TOKEN = "1609015509772636163-jPz15ZFPf4x23YwIthetgYACbQjfAn"
-ACCESS_TOKEN_SECRET = "28s2K6JhmW80PikPYtNwtmcKf0u54q9IEOH3GeNUCqHhH"
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAJDEkwEAAAAAgovfaMqKoYTkgCXzj56pS36h5GQ%3DBu2gEgm6bzmUNEUybgG1E8T1tFrrqe65AaFmjD1xX9k1i2y5eJ"
+CONSUMER_API_KEY = ""
+CONSUMER_API_SECRET = ""
+ACCESS_TOKEN = ""
+ACCESS_TOKEN_SECRET = ""
+BEARER_TOKEN = ""
 
 # CELERY CONFIGURATION
 
