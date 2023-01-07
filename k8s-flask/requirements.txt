@@ -1,5 +1,0 @@
-flask
-celery
-gunicorn
-pymongo
-kubernetes
