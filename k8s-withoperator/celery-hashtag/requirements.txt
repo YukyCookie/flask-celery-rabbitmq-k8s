@@ -1,0 +1,7 @@
+tweepy
+pymongo
+celery
+kubernetes
+kombu
+textblob
+wordcloud
