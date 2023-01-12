@@ -1,0 +1,1 @@
+kubectl autoscale deployment celery-hashtag-deployment-1 -n twitter-sentiment --min=1 --max=3 --cpu-percent=50

@@ -65,12 +65,27 @@
                                     <input type="text" name="tweet_search" placeholder="Enter the number of shown tweets" class="form-username form-control" id="form-number">
                                 </div>
                                 <div class="form-group">
-                                    <label for="form-prefer">Enter searching preference (hashtag or city): </label>
-                                    <input type="text" name="tweet_search" placeholder="Enter searching preference: hashtag or city" class="form-username form-control" id="form-prefer">
+                                    <label for="select-search">Enter searching preference (hashtag or city): </label>
+                                    <!-- <input type="text" name="tweet_search" placeholder="Enter searching preference: hashtag or city" class="form-username form-control" id="form-prefer"> -->
+                                    <select type="option" id="select-search" placeholder="Please Choose ...">
+                                        <option>Hashtag</option>
+                                        <option>City</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="form-username">Enter a search topic(e.g. hello) or city(e.g. NewYork/newyork): </label>
                                     <input type="text" name="tweet_search" placeholder="Enter a search topic(e.g. hello) or city(e.g. NewYork/newyork)" class="form-username form-control" id="form-username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="select-result">Enter result preference (hashtag or city): </label>
+                                    <!-- <input type="text" name="tweet_search" placeholder="Enter searching preference: hashtag or city" class="form-username form-control" id="form-prefer"> -->
+                                    <select  type="option" id="select-result" placeholder="Please Choose ...">
+                                        <option>All Tweets</option>
+                                        <option>Positive Tweets</option>
+                                        <option>Negative Tweets</option>
+                                        <option>Opinion Tweets</option>
+                                        <option>Factual Tweets</option>
+                                    </select>
                                 </div>
 
 
@@ -80,15 +95,6 @@
                                         <button type="reset" data-toggle="tooltip" data-placement="left" title="Reset Filters" id='res' class="btn group-btn-all reset_filter">Reset Filters</button>
                                     </div>
                                 </div>
-                                <div class="btn-toolbar" role="toolbar">
-                                    <div class="btn-group" >
-                                        <button data-toggle="tooltip" data-placement="bottom" title="Show only Positive Tweets" class="btn group-btn-1" id="psenti" >Positive Tweets</button>
-                                        <button data-toggle="tooltip" data-placement="bottom" title="Show only Negative Tweets" class="btn group-btn-2" id="nsenti" >Negative Tweets</button>
-                                        <button data-toggle="tooltip" data-placement="bottom" title="Tweets which are Opinion" id="opi" class="btn group-btn-2" >Opinion Tweet</button>
-                                        <button data-toggle="tooltip" data-placement="bottom" title="Tweets which are factual" id="fac" class="btn group-btn-1" >Factual Tweet</button>
-                                    </div>
-                                </div>
-
 
                             </form>
                         </div>
@@ -106,13 +112,22 @@
                     <div id="senti_piechart">
                         
                     </div>
+                    
+                    <div class="btn-toolbar2" role="toolbar" style="display: none;" id="search_button">
+                        <div class="btn-group" >
+                            <button value="pos" data-toggle="tooltip" data-placement="bottom" title="Show only Positive Tweets" class="btn group-btn-1" id="psenti" >Positive Tweets</button>
+                            <button value="neg" data-toggle="tooltip" data-placement="bottom" title="Show only Negative Tweets" class="btn group-btn-2" id="nsenti" >Negative Tweets</button>
+                            <button value="opi" data-toggle="tooltip" data-placement="bottom" title="Tweets which are Opinion" id="opi" class="btn group-btn-2" >Opinion Tweet</button>
+                            <button value="fac" data-toggle="tooltip" data-placement="bottom" title="Tweets which are factual" id="fac" class="btn group-btn-1" >Factual Tweet</button>
+                        </div>
+                    </div> 
+                    <hr id="search_hr"/>                  
                     <div class="Loading", id="loading2" style="display: none;">
                         <div class="Loading-bar">
                             <div class="Loading-circle"></div>
                             <p class="Loading-p">Loading</p>
                         </div>
                     </div>
-                    <hr id="search_hr"/>
                     <div id="wordcloud_div" >
                         <img id="wordcloud_img" title="wordcloud">
                     </div>

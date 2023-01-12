@@ -15,6 +15,7 @@ else:
     config.load_kube_config('/var/snap/microk8s/current/credentials/client.config')
 
 v1 = client.CoreV1Api()
+
 # MONGODB
 mongo_server = os.environ.get("MONGODB_SERVICE_SERVICE_HOST")
 mongo_port = 27017
@@ -30,11 +31,11 @@ rabbitmq_user = base64.b64decode(rabbitmq_secret["username"]).decode("utf-8")
 rabbitmq_password = base64.b64decode(rabbitmq_secret["password"]).decode("utf-8")
 
 # TWITTER CREDENTIALS
-CONSUMER_API_KEY = "ex2MIVz5iSjJl3LZ26HVoWm13"
-CONSUMER_API_SECRET = "2ca1BIzthsgY0OQVduJQrxhUia5pYvZlhfnCsXt4ypNtQwxaDq"
-ACCESS_TOKEN = "1609015509772636163-PHBB5kzAhE91RRuxBP5668C6zloujF"
-ACCESS_TOKEN_SECRET = "DHS9qYO1qfSA4kLDDV6CDhX40jcAssifDcZc4l4qBeNCR"
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAJDEkwEAAAAAn9HPvleKCj1tSdyXSRWN1euxIBg%3DWvJMXnrkmsbfr7MEus5u74x12GLgdF616djuj7WFly2AOtsB8a"
+CONSUMER_API_KEY = ""
+CONSUMER_API_SECRET = ""
+ACCESS_TOKEN = ""
+ACCESS_TOKEN_SECRET = ""
+BEARER_TOKEN = ""
 
 
 # CELERY CONFIGURATION
@@ -47,13 +48,32 @@ CELERY_QUEUES = (
     Queue('send_hash', routing_key='send.hash', queue_arguments={'x-max-priority': 1}),
     Queue('loc_queue', routing_key='loc.tasks', queue_arguments={'x-max-priority': 10}),
     Queue('hash_queue', routing_key='hash.tasks', queue_arguments={'x-max-priority': 10}),
+    Queue('hash_senti', routing_key='hash.senti', queue_arguments={'x-max-priority': 5}),
+    Queue('loc_senti', routing_key='loc.senti', queue_arguments={'x-max-priority': 5}),
 )
+    
 
 CELERY_ROUTES=({
     'loc_module.tasks.search': {'queue': 'loc_queue', 'routing_key': 'loc.tasks',},
     'loc_module.tasks.insert_data': {'queue': 'send_loc', 'routing_key': 'send.loc'},
+    'loc_module.tasks.search_pos': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.search_neg': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.search_opi': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.search_fac': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.select_pos': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.select_neg': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.select_opi': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
+    'loc_module.tasks.select_fac': {'queue': 'loc_senti', 'routing_key': 'loc.senti'},
     'hashtag_module.tasks.search': {'queue': 'hash_queue', 'routing_key': 'hash.tasks',},
     'hashtag_module.tasks.insert_data': {'queue': 'send_hash', 'routing_key': 'send.hash'},
+    'hashtag_module.tasks.search_pos': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.search_neg': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.search_opi': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.search_fac': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.select_pos': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.select_neg': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.select_opi': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
+    'hashtag_module.tasks.select_fac': {'queue': 'hash_senti', 'routing_key': 'hash.senti'},
     },
 )
 

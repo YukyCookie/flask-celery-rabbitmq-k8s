@@ -21,7 +21,7 @@ spec:
         command: 
         - "bash"
         - "-c"
-        - "celery --app loc_module.tasks worker --loglevel=INFO --concurrency=1 -n cityworker1 -Q loc_queue,send_loc"
+        - "celery --app loc_module.tasks worker --loglevel=INFO --concurrency=1 -n cityworker1@%h -Q loc_queue,send_loc,loc_senti"
         imagePullPolicy: Never
         ports:
         - containerPort: 5672

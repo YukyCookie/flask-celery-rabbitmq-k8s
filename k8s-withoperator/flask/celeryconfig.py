@@ -14,6 +14,7 @@ else:
     config.load_kube_config('/var/snap/microk8s/current/credentials/client.config')
 
 v1 = client.CoreV1Api()
+
 # MONGODB
 mongo_server = os.environ.get("MONGODB_SERVICE_SERVICE_HOST")
 mongo_port = 27017
@@ -29,11 +30,11 @@ rabbitmq_user = base64.b64decode(rabbitmq_secret["username"]).decode("utf-8")
 rabbitmq_password = base64.b64decode(rabbitmq_secret["password"]).decode("utf-8")
 
 # TWITTER CREDENTIALS
-CONSUMER_API_KEY = "ex2MIVz5iSjJl3LZ26HVoWm13"
-CONSUMER_API_SECRET = "2ca1BIzthsgY0OQVduJQrxhUia5pYvZlhfnCsXt4ypNtQwxaDq"
-ACCESS_TOKEN = "1609015509772636163-PHBB5kzAhE91RRuxBP5668C6zloujF"
-ACCESS_TOKEN_SECRET = "DHS9qYO1qfSA4kLDDV6CDhX40jcAssifDcZc4l4qBeNCR"
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAJDEkwEAAAAAn9HPvleKCj1tSdyXSRWN1euxIBg%3DWvJMXnrkmsbfr7MEus5u74x12GLgdF616djuj7WFly2AOtsB8a"
+CONSUMER_API_KEY = ""
+CONSUMER_API_SECRET = ""
+ACCESS_TOKEN = ""
+ACCESS_TOKEN_SECRET = ""
+BEARER_TOKEN = ""
 
 # CELERY CONFIGURATION
 
