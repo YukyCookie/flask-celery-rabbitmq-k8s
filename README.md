@@ -42,3 +42,4 @@ Now the image on Microk8s is ready to use in the deployment.
 
 ## B. 
 ![](website.png)
+![](website.mp4)
